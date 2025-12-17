@@ -18,7 +18,7 @@ This project sets up the infrastructure for a holiday shopping app using Terrafo
 
 ## Prerequisites
 
-- Terraform >= 1.3.0
+- Terraform >= 1.14.2
 - AWS CLI configured with appropriate credentials
 
 ## Usage

@@ -1,21 +1,21 @@
 # Root module to call other modules
 
 module "networking" {
-  source      = "./modules/networking"
-  vpc_cidr    = "10.0.0.0/16"
-  subnet_count = 2
+  source       = "./modules/networking"
+  vpc_cidr     = var.vpc_cidr
+  subnet_count = var.subnet_count
 }
 
 module "load_balancing" {
-  source      = "./modules/load_balancing"
-  lb_name     = "holiday-shopping-app-lb"
-  subnet_ids  = module.networking.subnet_ids
+  source     = "./modules/load_balancing"
+  lb_name    = var.lb_name
+  subnet_ids = module.networking.subnet_ids
 }
 
 module "compute" {
   source        = "./modules/compute"
-  instance_type = "t2.micro"
-  ami_id        = "ami-0c55b159cbfafe1f0" # Replace with a valid AMI ID
+  instance_type = var.instance_type
+  ami_id        = var.ami_id
   subnet_id     = module.networking.subnet_ids[0]
 }
 

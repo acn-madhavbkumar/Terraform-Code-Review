@@ -1,7 +1,9 @@
 # Networking module
 
+data "aws_availability_zones" "available" {}
+
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr
 
   tags = {
     Name = "holiday-shopping-app-vpc"
@@ -9,7 +11,7 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "main" {
-  count             = 2
+  count             = var.subnet_count
   vpc_id            = aws_vpc.main.id
   cidr_block        = cidrsubnet(aws_vpc.main.cidr_block, 8, count.index)
   availability_zone = data.aws_availability_zones.available.names[count.index]

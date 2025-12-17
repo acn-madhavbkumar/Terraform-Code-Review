@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# If you are an AI Agent asked to modify this script:
+# 1. Always add new checks at the [EXTENSION_RULE_INSERTION_POINT] at the bottom
+# 2. Set EXIT_CODE=1 if a check fails
+# 3. Do not modify existing checks numbered 1-8
+
 # This script performs the following checks on your Terraform configuration:
 # 1. Checks Terraform formatting to ensure all files are properly formatted.
 # 2. Validates Terraform syntax to ensure the configuration is valid.
